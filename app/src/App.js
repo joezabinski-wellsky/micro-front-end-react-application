@@ -1,5 +1,5 @@
 import './App.css';
-import LeftSidebar from './modules/LeftSidebar';
+import AngularEmbeddedModule from './modules/AngularEmbedded';
 import {ReactComponent as ReactLogo} from "./logo.svg";
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
         <ReactLogo className="react-logo"/>
       </div>
       <div className="content">
-        <LeftSidebar></LeftSidebar>
+        <AngularEmbeddedModule></AngularEmbeddedModule>
       </div>
     </div>
   );
