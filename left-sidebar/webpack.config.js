@@ -33,7 +33,7 @@ module.exports = {
         name: "leftSidebar",
         filename: "remoteEntry.js",
         exposes: {
-            './leftSideBar':'./src/loadApp.ts'
+            './leftSideBarModule':'./src/loadApp.ts'
         },
 
         // For hosts (please adjust)

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import {mount} from "leftSideBar/leftSideBar";
+import {mount} from "leftSideBar/leftSideBarModule";
 import "./LeftSidebar.css";
 
 const LeftSidebarModule = () => {
