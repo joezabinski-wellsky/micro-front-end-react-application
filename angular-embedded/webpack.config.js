@@ -10,7 +10,7 @@ sharedMappings.register(
 
 module.exports = {
   output: {
-    uniqueName: "leftSidebar",
+    uniqueName: "angular-embedded",
     publicPath: "auto",
     scriptType:'text/javascript'
   },
@@ -30,10 +30,10 @@ module.exports = {
         // library: { type: "module" },
 
         // For remotes (please adjust)
-        name: "leftSidebar",
+        name: "angularEmbedded",
         filename: "remoteEntry.js",
         exposes: {
-            './leftSideBarModule':'./src/loadApp.ts'
+            './angularModule':'./src/loadApp.ts'
         },
 
         // For hosts (please adjust)
