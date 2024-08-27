@@ -12,10 +12,7 @@ module.exports = {
                     new ModuleFederationPlugin({
                       name: "app",
                       remotes: {
-                        header: "header@http://localhost:3001/remoteEntry.js",
                         leftSideBar:"leftSidebar@http://localhost:3002/remoteEntry.js",
-                        rightSidebar:"rightSidebar@http://localhost:3003/remoteEntry.js",
-                        footer: "footer@http://localhost:3004/remoteEntry.js",
                       },
                       shared:{
                           ...deps,
