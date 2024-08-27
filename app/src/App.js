@@ -1,5 +1,4 @@
 import './App.css';
-import Header from "./modules/Header";
 import RightSidebar from "./modules/RightSidebar";
 import LeftSidebar from './modules/LeftSidebar';
 import {ReactComponent as ReactLogo} from "./logo.svg";
@@ -10,9 +9,6 @@ function App() {
         <h1>Main Application in</h1>
         <ReactLogo className="react-logo"/>
       </div>
-      <header className="header-container">
-        <Header></Header>
-      </header>
       <div className="content">
         <LeftSidebar></LeftSidebar>
         <RightSidebar></RightSidebar>
