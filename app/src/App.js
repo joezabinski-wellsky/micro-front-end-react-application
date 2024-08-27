@@ -1,6 +1,5 @@
 import './App.css';
 import Header from "./modules/Header";
-import Footer from "./modules/Footer";
 import RightSidebar from "./modules/RightSidebar";
 import LeftSidebar from './modules/LeftSidebar';
 import {ReactComponent as ReactLogo} from "./logo.svg";
@@ -18,9 +17,6 @@ function App() {
         <LeftSidebar></LeftSidebar>
         <RightSidebar></RightSidebar>
       </div>
-      <footer className="footer-container">
-        <Footer></Footer>
-      </footer>
     </div>
   );
 }
