@@ -1,0 +1,22 @@
+.App {
+  text-align: center;
+}
+
+.header-container {
+  height: 60px;
+}
+.content {
+  display: flex;
+  height: calc(100vh - 160px);
+}
+.content > * {
+  flex:1 50%;
+}
+.logo {
+  height: 90px;
+}
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
