@@ -29,6 +29,6 @@ A Next.js application compiled with Next. Uses `@module-federation/nextjs-mf`'s 
  - Open a second Terminal, and navigate to `./shell`. Install with `npm install`. Run the Next.js app with `npm run dev`.
  - In a browser, navigate to `localhost:3000`.
 
-### Gotchas Discovered
+## Gotchas Discovered
 - Next.js's latest version standardly includes a new App Router of theirs, making Next.js apps work more like an SPA. Zach Jackson has already (gone on the record)[https://github.com/module-federation/core/pull/2002#issuecomment-2003747435] saying that Next.js App Routing and his NextFederationPlugin are not compatible, and never will be. So if anyone wants to use his plugin, they can't ever use App Router.
 - There is (an open bug)[https://github.com/module-federation/core/issues/1961] for `@module-federation/nextjs-mf` which seems to make it impossible to use NextFederationPlugin for anything beyond `@module-federation/nextjs-mf` v8.3.9 and Next.js v13.4.9. As of August 2024, `@module-federation/nextjs-mf` v8.3.9 was released just last spring, but Next.js is already on v14. So this bug is an obstacle to keeping up with Next.js.
