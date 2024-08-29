@@ -1,28 +1,34 @@
 
-# React application with micro front end architecture
+# React and Next.js applications with micro front end architecture
 
-This is a demonstration project to show multiple micro application developed in different frameworks`(like React,Angular,Vue,Svelte)` can exist inside same application.Thanks to Webpack 5 module federation
+This is a demonstration project to show an Angular micro application being consumed in React and Next.js.
 
-## components
+## Status
+React is working.
 
-### App - 
-Its a React application developed using create react app and acting as shell(Container) application which renders small micro application.
+Next.js is not yet working. The module can be loaded successfully, and the core Angular function making everything happen can run, but it needs to be run with precise timing that needs more research. Next.js has a lot more guardrails than React around executing code in the context of dynamically loading a component. Our goal is likely plausible; we just would need to learn more about Next.js.
 
-### Header -
-Its a React application developed using create react app and acting as micro application which renders header of the application
+## Components
 
-### Left sidebar -
-Its an Angular application developed using angular cli and acting as micro application which renders left sidebar of the application
+### angular-embedded
+An Angular application compiled with ngx-build-plus. Uses Webpack's ModuleFederationPlugin to export a federated module.
 
-### Right sidebar -
-Its a Vue application developed using vue cli and acting as micro application which renders right sidebar of the application
+### app
+A React application compiled with Craco. Uses Webpack's ModuleFederationPlugin to import `angular-embedded`'s federated module.
 
-### Footer -
-Its a Svelte application developed using svelte webpack template and acting as micro application which renders footer of the application
+#### How to run the React application
+ - In Terminal, navigate to `./angular-embedded`. Install with `npm install`. Run the Angular app with `npm run start`.
+ - Open a second Terminal, and navigate to `./app`. Install with `npm install`. Run the React app with `npm run start`.
+ - In a browser, navigate to `localhost:3000`.
 
-### How to run the application
+### shell
+A Next.js application compiled with Next. Uses `@module-federation/nextjs-mf`'s NextFederationPlugin to import `angular-embedded`'s federated module.
 
-- Go to each folder(app,header,left-sidebar,right-sidebar,footer) and run `npm start`
-- Open browser and type `http://localhost:3000`
+#### How to run the Next.js application
+ - In Terminal, navigate to `./angular-embedded`. Install with `npm install`. Run the Angular app with `npm run start`.
+ - Open a second Terminal, and navigate to `./shell`. Install with `npm install`. Run the Next.js app with `npm run dev`.
+ - In a browser, navigate to `localhost:3000`.
 
-<img width="1440" alt="Screenshot 2022-02-07 at 1 24 51 AM" src="https://user-images.githubusercontent.com/12604444/152698973-ded96d4a-1aa3-4764-8012-28bf5e50d4cc.png">
+### Gotchas Discovered
+- Next.js's latest version standardly includes a new App Router of theirs, making Next.js apps work more like an SPA. Zach Jackson has already (gone on the record)[https://github.com/module-federation/core/pull/2002#issuecomment-2003747435] saying that Next.js App Routing and his NextFederationPlugin are not compatible, and never will be. So if anyone wants to use his plugin, they can't ever use App Router.
+- There is (an open bug)[https://github.com/module-federation/core/issues/1961] for `@module-federation/nextjs-mf` which seems to make it impossible to use NextFederationPlugin for anything beyond `@module-federation/nextjs-mf` v8.3.9 and Next.js v13.4.9. As of August 2024, `@module-federation/nextjs-mf` v8.3.9 was released just last spring, but Next.js is already on v14. So this bug is an obstacle to keeping up with Next.js.
