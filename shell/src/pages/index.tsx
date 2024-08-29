@@ -1,10 +1,45 @@
-import Head from "next/head";
-import Image from "next/image";
-import { Inter } from "next/font/google";
-import styles from "@/styles/App.module.css";
+import dynamic from 'next/dynamic';
+import Head from 'next/head';
+import Image from 'next/image';
+import { Inter } from 'next/font/google';
+import styles from '@/styles/App.module.css';
 import ReactLogo from './logo.svg';
+import { createContext } from 'react';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
+
+const loadContext = createContext(null);
+
+// This approach gets closer to the desired behavior, but the Angular app is not mounted because when mount() is called, the <app-root> is not yet loaded.
+const AngularEmbeddedComponent = dynamic(
+  () =>
+    import('angularEmbedded/angularModule')
+      .then((m) => {
+        m.mount();
+        return m;
+      })
+      .then(() => () => (
+        <div>
+          <app-root></app-root>
+        </div>
+      )),
+  { ssr: false },
+);
+
+// Webpack cannot compile with this approach
+// function AngularEmbeddedComponent() {
+//   useEffect(() => {
+//     import('angularEmbedded/angularModule').then((m) => {
+//       m.mount();
+//     });
+//   }, []);
+
+//   return (
+//     <div>
+//       <app-root></app-root>
+//     </div>
+//   );
+// }
 
 export default function Home() {
   return (
@@ -16,14 +51,14 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.App}>
-      <div className={styles.main}>
-        <h1>Main Application in</h1>
-        <Image src={ReactLogo} alt="" className={styles.logo}/>
+        <div className={styles.main}>
+          <h1>Main Application in</h1>
+          <Image src={ReactLogo} alt="" className={styles.logo} />
+        </div>
+        <div className={styles.content}>
+          <AngularEmbeddedComponent></AngularEmbeddedComponent>
+        </div>
       </div>
-      {/* <div className="content">
-        <AngularEmbeddedModule></AngularEmbeddedModule>
-      </div> */}
-    </div>
     </>
   );
 }
