@@ -17,7 +17,7 @@ An Angular application compiled with ngx-build-plus. Uses Webpack's ModuleFedera
 A React application compiled with Craco. Uses Webpack's ModuleFederationPlugin to import `angular-embedded`'s federated module.
 
 #### How to run the React application
- - In Terminal, navigate to `./angular-embedded`. Install with `npm install`. Run the Angular app with `npm run start`.
+ - In Terminal, navigate to `./angular-embedded`. Install with `npm install`. Export the Angular component with `npm run start`.
  - Open a second Terminal, and navigate to `./app`. Install with `npm install`. Run the React app with `npm run start`.
  - In a browser, navigate to `localhost:3000`.
 
@@ -25,7 +25,7 @@ A React application compiled with Craco. Uses Webpack's ModuleFederationPlugin t
 A Next.js application compiled with Next. Uses `@module-federation/nextjs-mf`'s NextFederationPlugin to import `angular-embedded`'s federated module.
 
 #### How to run the Next.js application
- - In Terminal, navigate to `./angular-embedded`. Install with `npm install`. Run the Angular app with `npm run start`.
+ - In Terminal, navigate to `./angular-embedded`. Install with `npm install`. Export the Angular component with `npm run start`.
  - Open a second Terminal, and navigate to `./shell`. Install with `npm install`. Run the Next.js app with `npm run dev`.
  - In a browser, navigate to `localhost:3000`.
 
