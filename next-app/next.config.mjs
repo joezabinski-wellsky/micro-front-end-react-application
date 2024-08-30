@@ -7,6 +7,7 @@ const nextConfig = {
     if (!options.isServer) {
       config.plugins.push(
         new NextFederationPlugin({
+          // 'static/chunks' is apparently the default location for the filename, although I have no documentation for that
           filename: 'static/chunks/remoteEntry.js',
           name: 'shell',
           remotes: {

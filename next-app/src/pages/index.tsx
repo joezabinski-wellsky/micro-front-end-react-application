@@ -1,23 +1,21 @@
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Image from 'next/image';
-import { Inter } from 'next/font/google';
 import styles from '@/styles/App.module.css';
 import ReactLogo from './logo.svg';
-import { createContext } from 'react';
-
-const inter = Inter({ subsets: ['latin'] });
-
-const loadContext = createContext(null);
 
 // This approach gets closer to the desired behavior, but the Angular app is not mounted because when mount() is called, the <app-root> is not yet loaded.
 const AngularEmbeddedComponent = dynamic(
   () =>
+    // Webpack only seems to understand the import of an implicitly exported module within a dynamic() function.
+    // A standard ESM import statement at the beginning of the file or anywhere else does not compile.
+    // A workaround might be to use `@module-federation/nextjs-mf/utils`'s `injectScript` function.
     import('angularEmbedded/angularModule')
       .then((m) => {
         m.mount();
         return m;
       })
+      // The lack of app-root typing does not affect the runtime. Extending the global JSX.IntrinsicElements interface would be a workaround, and is a bit laborious for this stage.
       .then(() => () => (
         <div>
           <app-root></app-root>

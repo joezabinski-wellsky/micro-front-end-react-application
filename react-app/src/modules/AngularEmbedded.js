@@ -7,7 +7,7 @@ const AngularEmbeddedModule = () => {
   useEffect(() => {
     mount();  
   }, []);   
-  return <div className="left-sidebar-module"><app-root></app-root></div>;
+  return <div className="ng-exported-module"><app-root></app-root></div>;
 };
 
 export default AngularEmbeddedModule;
